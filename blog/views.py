@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from django.db.models import Q
+from django.shortcuts import render, get_list_or_404, render
+
+from .models import Post, Category
 
 # Create your views here.
+def home(request):
+    Post = Post.objects.filter(status=Post.ACTIVE).orden_by('-created_at')
+    context = {
+        'posts': Post
+    }
+    return render(request, 'blog/home.html', context)
