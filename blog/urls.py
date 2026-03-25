@@ -1,7 +1,8 @@
-
+from django.contrib import admin 
 from django.urls import path
-from .views import home
+from .views import home, detail
 
 urlpatterns = [
-    path('home/', home,name='home'),
+    path('', home,name='home'),
+    path('blog/<int:id>/', detail, name='post_detail'),
 ]
